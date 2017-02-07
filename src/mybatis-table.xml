@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tableinfo">
+	
+    <select id="getTableInfo" parameterType="string" resultType="map">
+    	SELECT table_name, lower(column_name) as column_name, data_type, column_comment 
+    	FROM information_schema.COLUMNS t 
+    	WHERE TABLE_NAME = #{value}
+    </select>
+
+</mapper>
